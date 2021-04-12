@@ -93,16 +93,31 @@ Vamos con el paso a paso:
 
 Vimos que esta variable es muy útil para analizar la distribución de la humedad del suelo y también para describir la microtopografía que es responsable de buena parte de lo que denominamos "microclima". Es fácil de calcular a partir de un modelo digital de elevaciones. [Aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/mde_snev.tif.zip) hay un mde de Sierra Nevada. Busca cómo calcular la radiación total anual en tu herramienta favorita (QGIS, R, o phyton). 
 
-   
 
-​      \- modelo de radiación solar
 
-​      \- mapas de clima
+### Mapas de clima (Temperatura y precipitación)
 
-​      \- mapa de CTI
+Esta variable también es importante porque nos permitirá distinguir cómo cambian en altura las condiciones macroclimáticas. Para acceder a esta información tendrás que aguzar tu ingenio y buscar en internet... Seguro que encuentras mapas útiles. Ánimo con ello ;)   
 
-- densidad de los pinares
 
-​      
 
-​      \- el peso del pasado
+### Humedad potencial del suelo
+
+El [índice de humedad](https://wikispaces.psu.edu/display/AnthSpace/Compound+Topographic+Index) (compound topographic index) se usa para inferir la capacidad que tiene un suelo de acumular agua en virtud de su posición topográfica en una ladera (en la parte alta o en la baja), y en relación a su altura relativa (está rodeado de píxeles más altos: cóncavo; está rodeado de píxeles más bajos: convexo). 
+
+Este índice se puede calcular fácilmente con QGIS y con otras herramientas. Os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/cti_pinares.tif) un mapa que muestra la distribución espacial de dicho índice en los pinares de repoblación de Sierra Nevada. 
+
+
+
+### Densidad de los pinares
+
+Aunque calculamos la densidad de los pinares de varias maneras al principio de la asignatura, os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/TDC_pinares.tif) un mapa de densidad del estrato arbóreo (expresado en porcentaje) y calculado mediante teledetección. En [esta](https://land.copernicus.eu/pan-european/high-resolution-layers/forests/tree-cover-density/status-maps/2015) página tienes información sobre cómo se ha realizado.
+
+
+
+### Distribución de los pinares de repoblación
+
+Por si no lo tenéis controlado, [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/pinares_repoblacion.tif) va un mapa que muestra la distribución de los pinares en Sierra Nevada. 
+
+
+
