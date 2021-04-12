@@ -32,9 +32,7 @@ Como consecuencia de lo comentado más arriba, os paso la siguiente información
 
 ### Incorporación de la variable "distancia a manchas de vegetación natural"
 
-
-
-Para generar este mapa necesitamos contar con la distribución de los pinares de repoblación y con la de las formaciones vegetales que actuarán como donadoras de propágulos. Obtendremos ambos mapas a partir del mapa de usos y coberturas vegetales de Andalucía, generado por la [REDIAM](http://www.juntadeandalucia.es/medioambiente/site/rediam). En [este](https://descargasrediam.cica.es/repo/s/RUR?path=%2F01_CARACTERIZACION_TERRITORIO%2F06_USOS_COBERTURAS%2F02_MUCVA_25000%2FMUCVA25_Multitemporal) enlace puedes descargar el mapa de usos de Sierra Nevada. Y [aquí](https://www.youtube.com/watch?v=RNQ7qwG5UDQ) tienes un video en el que te cuento cómo está estructurado. Para esta práctica mejor usa la capa que se muestra más arriba.
+Para generar este mapa necesitamos contar con la distribución de los pinares de repoblación y con la de las formaciones vegetales que actuarán como donadoras de propágulos. Obtendremos ambos mapas a partir del mapa de usos y coberturas vegetales de Andalucía, generado por la REDIAM. En [este](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/MUCVA_25_multi_snevada.zip) enlace puedes descargar el mapa de usos de Sierra Nevada. Y [aquí](https://www.youtube.com/watch?v=RNQ7qwG5UDQ) tienes un video en el que te cuento cómo está estructurado. 
 
 De manera resumida haremos lo siguiente: Crearemos un campo nuevo en el mapa de usos y coberturas anterior y asignaremos los valores 1 a todos los polígonos que tengan pinares, mientras que pondremos el valor 2 a todos los que sean considerados como fuentes de semillas. 
 
@@ -87,22 +85,15 @@ Vamos con el paso a paso:
   - _distance units_: Georeferenced units.
   - _proximity map_ (mapa de salida): _distancia1.tif_
 
-  O expresado en el lenguaje de QGIS:
-
-
-```python  
-  gdal_proximity.py -srcband 1 -distunits GEO -values 2 -nodata 0.0
-   -ot Float32 -of GTiff "/tu ruta/dist_target.tif"
-    "/tu ruta/distancia1.tif"
-```
-
-- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (pinares\repoblacion\_23030.tif). Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará _dist\_nat.tif_
+- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (_pinares\_repoblacion\_23030.tif_). Puedes descargar dicho mapa [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/pinares_repoblacion.tif) aunque recuerda que deberás de recortarlo por tu zona de estudio. Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará: _dist\_nat.tif_
 
 
 
- 
+### Radiación solar incidente
 
-​      \- práctica de ecología en la que ven lo de la fuente de semillas.
+Vimos que esta variable es muy útil para analizar la distribución de la humedad del suelo y también para describir la microtopografía que es responsable de buena parte de lo que denominamos "microclima". Es fácil de calcular a partir de un modelo digital de elevaciones. [Aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/mde_snev.tif.zip) hay un mde de Sierra Nevada. Busca cómo calcular la radiación total anual en tu herramienta favorita (QGIS, R, o phyton). 
+
+   
 
 ​      \- modelo de radiación solar
 
