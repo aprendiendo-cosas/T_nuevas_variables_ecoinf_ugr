@@ -1,0 +1,117 @@
+# Sesión sobre nuevas variables a incorporar en la tarea final
+
+
+> + **_Versión_**: 2020-2021
+> + **_Asignatura (titulación)_**: Ciclo de gestión del dato: ecoinformática (máster conservación, gestión y restauración de la biodiversidad. UGR). Curso 2020-2021
+> + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
+
+
+
+## Objetivos del ejercicio
+
+Esta actividad tiene los siguientes objetivos de aprendizaje:
+
++ Evocar el conocimiento adquirido sobre el problema planteado en la asignatura para identificar y proponer nuevas variables importantes.
++ Transferir el conocimiento adquirido sobre técnicas de análisis para pensar cómo preparar los datos relacionados con las nuevas variables identificadas.
++ Construir conocimiento de manera cooperativo en relación a las nuevas variables a incorporar al análisis.
+
+## Contenido
+
+La sesión se organiza en torno a la primera versión de flujo de trabajo que se elaboró al inicio de la asignatura. En él se observan algunas variables que se propusieron y que no se han abordado por falta de tiempo. La enumeración de estas variables da pie a que se inicie un debate muy fructífero en el que los alumnos hacen sus propuesta. El profesor conduce el debate y trata de destilar los consesos adoptados.
+
+El siguiente vídeo reproduce el diálogo entablado entre los participantes.
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RN5kF4rFbA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+Como consecuencia de lo comentado más arriba, os paso la siguiente información por si os resulta útil:
+
+
+
+### Incorporación de la variable "distancia a manchas de vegetación natural"
+
+
+
+Para generar este mapa necesitamos contar con la distribución de los pinares de repoblación y con la de las formaciones vegetales que actuarán como donadoras de propágulos. Obtendremos ambos mapas a partir del mapa de usos y coberturas vegetales de Andalucía, generado por la [REDIAM](http://www.juntadeandalucia.es/medioambiente/site/rediam). En [este](https://descargasrediam.cica.es/repo/s/RUR?path=%2F01_CARACTERIZACION_TERRITORIO%2F06_USOS_COBERTURAS%2F02_MUCVA_25000%2FMUCVA25_Multitemporal) enlace puedes descargar el mapa de usos de Sierra Nevada. Y [aquí](https://www.youtube.com/watch?v=RNQ7qwG5UDQ) tienes un video en el que te cuento cómo está estructurado. Para esta práctica mejor usa la capa que se muestra más arriba.
+
+De manera resumida haremos lo siguiente: Crearemos un campo nuevo en el mapa de usos y coberturas anterior y asignaremos los valores 1 a todos los polígonos que tengan pinares, mientras que pondremos el valor 2 a todos los que sean considerados como fuentes de semillas. 
+
+El algoritmo de QGIS que permite calcular el mapa de distancias necesita un raster como capa de entrada. Así que rasterizaremos el fichero de formas anterior. Una vez hecho esto podremos calcular la distancia entre todos los píxeles ocupados por pinares (1) y su mancha de vegetación natural más cercana (2).
+
+Vamos con el paso a paso:
+
+- **(1)** Crear un campo nuevo llamado _dist\_targe_ en la tabla de atributos del shapefile llamado _MUCVA\_multitemporal.shp_. Debe de ser un campo numérico.
+- **(2)** Seleccionar los polígonos que tengan pinos. Para ello nos fijamos en el campo _DES\_UC07_, que contiene la descripción del uso del suelo en cada polígono en 2007. Veremos que hay una leyenda con muchos tipos. Buscamos aquellos que correspondan con bosques densos de coníferas. Y ejecutamos la siguiente consulta de selección con QGIS. Recuerda que hay que poner el nombre del cada campo cada vez que queremos seleccionar un tipo de uso. Y que el operador de unión es _OR_.
+
+```r
+"DES_UC07"  =  'FOR. ARBOL. DENSA: CONIFERAS' OR  
+"DES_UC07"  =  'FOR. ARBOL. DENSA: QUERCINEAS+CONIFERAS' or 
+ "DES_UC07" = 'MATORRAL DENSO ARBOLADO: CONIFERAS DENSAS' 
+
+```
+
+- **(2)** Ahora abrimos la tabla de atributos de la capa y hacemos que todos los registros seleccionados adquieran el valor de 1 en el campo _dist\_targe_. No olvides de guardar los cambios.
+- **(3)** Repetimos la misma operación anterior, pero seleccionando los polígonos que tengan la palabra _Quercus_ o _quercínea_ en el campo _DES\_UC07_. 
+
+```r
+"DES_UC07" = 'FOR. ARBOL. DENSA: QUERCINEAS' or 
+"DES_UC07"  ='MATORRAL DENSO' or  
+"DES_UC07"  ='MATORRAL DENSO ARBOLADO: OTRAS FRONDOSAS' or
+"DES_UC07"  = 'MATORRAL DENSO ARBOLADO: QUERCINEAS DENSAS' or
+"DES_UC07"  = 'MATORRAL DENSO ARBOLADO: QUERCINEAS DISPERSAS' or
+"DES_UC07"  =  'MATORRAL DISP. ARBOLADO: QUERCINEAS+CONIFERAS' or 
+"DES_UC07"  = 'MATORRAL DISP. ARBOLADO: QUERCINEAS. DENSO' or
+"DES_UC07"  = 'MATORRAL DISP. ARBOLADO: QUERCINEAS. DISPERSO'
+
+```
+
+- **(3)** Al igual que antes, haz que estos polígonos seleccionados tomen el valor 2 en el campo _dist\_targe_. Guarda los cambios.
+
+- **(4)** Ahora rasterizamos el fichero de formas anterior con la opción _rasterizar_ de QGIS (menú raster -> conversion -> rasterizar). Aplicamos los siguientes valores a los parámetros necesarios:
+
+  - _input layer_: _MUCVA\_25\_multi\_snevada.shp_
+  - _field to use for a burn-in value_: _dist\_targe_
+  - _output raster size units_: Georeferenced units
+  - _Width/horizontal resolution_: 100m
+  - _Height/horizontal resolution_: 100m
+  - _output extent_: Selecciona la capa _TCD\_pinares\_23030.tif_ para que QGIS copie de la misma la extensión del raster resultante. 
+  - _output\_file_: _dist\_target.tif_. Recuerda guardar el archivo en un sito conocido por ti.
+
+- **(5)** Creamos el mapa de distancia usando el algoritmo llamado _proximity raster_ (GDAL) en QGIS. Necesitamos añadir los siguientes parámetros:
+
+  - _input\_layer_: _dist\_target.tif_
+  - _band number_: 1
+  - _A list of pixel values in the source image to be considered..._: Aquí debemos indicar los valores de nuestro raster inicial que son considerados como "fuentes" de semillas. En nuestro caso es el valor 2.
+  - _distance units_: Georeferenced units.
+  - _proximity map_ (mapa de salida): _distancia1.tif_
+
+  O expresado en el lenguaje de QGIS:
+
+
+```python  
+  gdal_proximity.py -srcband 1 -distunits GEO -values 2 -nodata 0.0
+   -ot Float32 -of GTiff "/tu ruta/dist_target.tif"
+    "/tu ruta/distancia1.tif"
+```
+
+- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (pinares\repoblacion\_23030.tif). Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará _dist\_nat.tif_
+
+
+
+ 
+
+​      \- práctica de ecología en la que ven lo de la fuente de semillas.
+
+​      \- modelo de radiación solar
+
+​      \- mapas de clima
+
+​      \- mapa de CTI
+
+- densidad de los pinares
+
+​      
+
+​      \- el peso del pasado
