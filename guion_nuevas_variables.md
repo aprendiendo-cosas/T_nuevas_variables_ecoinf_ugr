@@ -74,7 +74,7 @@ Vamos con el paso a paso:
   - _output raster size units_: Georeferenced units
   - _Width/horizontal resolution_: 100m
   - _Height/horizontal resolution_: 100m
-  - _output extent_: Selecciona la capa _TCD\_pinares\_23030.tif_ para que QGIS copie de la misma la extensión del raster resultante. 
+  - _output extent_: Selecciona la capa _TCD\_pinares\.tif_ para que QGIS copie de la misma la extensión del raster resultante. 
   - _output\_file_: _dist\_target.tif_. Recuerda guardar el archivo en un sito conocido por ti.
 
 - **(5)** Creamos el mapa de distancia usando el algoritmo llamado _proximity raster_ (GDAL) en QGIS. Necesitamos añadir los siguientes parámetros:
@@ -85,7 +85,7 @@ Vamos con el paso a paso:
   - _distance units_: Georeferenced units.
   - _proximity map_ (mapa de salida): _distancia1.tif_
 
-- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (_pinares\_repoblacion\_23030.tif_). Puedes descargar dicho mapa [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/pinares_repoblacion.tif) aunque recuerda que deberás de recortarlo por tu zona de estudio. Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará: _dist\_nat.tif_
+- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (_pinares\_repoblacion\.tif_). Puedes descargar dicho mapa [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/pinares_repoblacion.tif) aunque recuerda que deberás de recortarlo por tu zona de estudio. Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará: _dist\_nat.tif_
 
 
 
@@ -111,7 +111,7 @@ Este índice se puede calcular fácilmente con QGIS y con otras herramientas. Os
 
 ### Densidad de los pinares
 
-Aunque calculamos la densidad de los pinares de varias maneras al principio de la asignatura, os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/TDC_pinares.tif) un mapa de densidad del estrato arbóreo (expresado en porcentaje) y calculado mediante teledetección. En [esta](https://land.copernicus.eu/pan-european/high-resolution-layers/forests/tree-cover-density/status-maps/2015) página tienes información sobre cómo se ha realizado.
+Aunque calculamos la densidad de los pinares de varias maneras al principio de la asignatura, os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/TCD_pinares.tif) un mapa de densidad del estrato arbóreo (expresado en porcentaje) y calculado mediante teledetección. En [esta](https://land.copernicus.eu/pan-european/high-resolution-layers/forests/tree-cover-density/status-maps/2015) página tienes información sobre cómo se ha realizado.
 
 
 
