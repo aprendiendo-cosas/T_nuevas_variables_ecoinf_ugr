@@ -120,4 +120,6 @@ Aunque calculamos la densidad de los pinares de varias maneras al principio de l
 Por si no lo tenéis controlado, [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/main/geoinfo/pinares_repoblacion.tif) va un mapa que muestra la distribución de los pinares en Sierra Nevada. 
 
 
+### Regeneración de la encina en función de los usos del suelo en 1956
 
+Esta variable es interesante y la comentamos al inicio de la asignatura. Pero no nos dio tiempo a ponerla en práctica. Si alguien tiene interés, [aquí](https://aprendiendo-cosas.github.io/peso_pasado_ecoinf_ugr/guion_peso_pasado.html) hay un guión que describe cómo incorporarla.
