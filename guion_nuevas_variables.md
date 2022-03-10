@@ -1,38 +1,27 @@
-# Sesión sobre nuevas variables a incorporar en la tarea final
+# Guión sobre nuevas variables a incorporar en la tarea final
 
 
-> + **_Versión_**: 2020-2021
-> + **_Asignatura (titulación)_**: Ciclo de gestión del dato: ecoinformática (máster conservación, gestión y restauración de la biodiversidad. UGR). Curso 2020-2021
+> + **_Versión_**: 2021-2022
+> + **_Asignatura (titulación)_**: Ciclo de gestión del dato: ecoinformática (máster conservación, gestión y restauración de la biodiversidad. UGR). Curso 2021-2022
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
 
 
 
-## Objetivos del ejercicio
+## Objetivos del guión
 
 Esta actividad tiene los siguientes objetivos de aprendizaje:
 
 + Evocar el conocimiento adquirido sobre el problema planteado en la asignatura para identificar y proponer nuevas variables importantes.
 + Transferir el conocimiento adquirido sobre técnicas de análisis para pensar cómo preparar los datos relacionados con las nuevas variables identificadas.
-+ Construir conocimiento de manera cooperativo en relación a las nuevas variables a incorporar al análisis.
++ Construir conocimiento de manera cooperativo con relación a las nuevas variables a incorporar al análisis.
 
-## Contenido
+## Contenido 
 
-La sesión se organiza en torno a la primera versión de flujo de trabajo que se elaboró al inicio de la asignatura. En él se observan algunas variables que se propusieron y que no se han abordado por falta de tiempo. La enumeración de estas variables da pie a que se inicie un debate muy fructífero en el que los alumnos hacen sus propuesta. El profesor conduce el debate y trata de destilar los consesos adoptados.
-
-El siguiente vídeo reproduce el diálogo entablado entre los participantes.
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RN5kF4rFbA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-Como consecuencia de lo comentado más arriba, os paso la siguiente información por si os resulta útil:
-
-
+La sesión se organiza en torno a la primera versión de flujo de trabajo que se elaboró al inicio de la asignatura ([aquí](https://rawcdn.githack.com/aprendiendo-cosas/T_flujo_trabajo_ecoinf_ugr/2021-2022/guion_flujo_trabajo.html) puedes ver el guión de dicha sesión). En él se observan algunas variables que se propusieron y que no se han abordado por falta de tiempo. En esta sesión describimos brevemente alguna de las variables que no hemos podido estudiar durante la asignatura pero que pueden incorporarse al trabajo final:
 
 ### Incorporación de la variable "distancia a manchas de vegetación natural"
 
-Para generar este mapa necesitamos contar con la distribución de los pinares de repoblación y con la de las formaciones vegetales que actuarán como donadoras de propágulos. Obtendremos ambos mapas a partir del mapa de usos y coberturas vegetales de Andalucía, generado por la REDIAM. En [este](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/MUCVA_25_multi_snevada.zip) enlace puedes descargar el mapa de usos de Sierra Nevada. Y [aquí](https://www.youtube.com/watch?v=RNQ7qwG5UDQ) tienes un video en el que te cuento cómo está estructurado. 
+Para generar este mapa necesitamos contar con la distribución de los pinares de repoblación y con la de las formaciones vegetales que actuarán como donadoras de propágulos. Obtendremos ambos mapas a partir del mapa de usos y coberturas vegetales de Andalucía, generado por la REDIAM. En [este](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/MUCVA_25_multi_snevada.zip) enlace puedes descargar el mapa de usos de Sierra Nevada. Y [aquí](https://www.youtube.com/watch?v=RNQ7qwG5UDQ) tienes un video en el que te cuento cómo está estructurado. 
 
 De manera resumida haremos lo siguiente: Crearemos un campo nuevo en el mapa de usos y coberturas anterior y asignaremos los valores 1 a todos los polígonos que tengan pinares, mientras que pondremos el valor 2 a todos los que sean considerados como fuentes de semillas. 
 
@@ -85,13 +74,13 @@ Vamos con el paso a paso:
   - _distance units_: Georeferenced units.
   - _proximity map_ (mapa de salida): _distancia1.tif_
 
-- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (_pinares\_repoblacion\.tif_). Puedes descargar dicho mapa [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/pinares_repoblacion.tif) aunque recuerda que deberás de recortarlo por tu zona de estudio. Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará: _dist\_nat.tif_
+- **(6)** El mapa de distancias obtenido cubre toda la extensión de la zona de estudio. Pero a nosotros nos interesa conocer la distancia únicamente en los píxeles ocupados por pinares. Por eso, para borrar el resto, multiplicamos el mapa obtenido anteriormente (_distancia1.tif_) por el mapa que muestra la distribución de los pinares (_pinares\_repoblacion\.tif_). Puedes descargar dicho mapa [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/pinares_repoblacion.tif) aunque recuerda que deberás de recortarlo por tu zona de estudio. Para hacer esta operación usamos la calculadora de mapas. El raster resultante se llamará: _dist\_nat.tif_
 
 
 
 ### Radiación solar incidente
 
-Vimos que esta variable es muy útil para analizar la distribución de la humedad del suelo y también para describir la microtopografía que es responsable de buena parte de lo que denominamos "microclima". Es fácil de calcular a partir de un modelo digital de elevaciones. [Aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/mde_snev.tif.zip) hay un mde de Sierra Nevada. Busca cómo calcular la radiación total anual en tu herramienta favorita (QGIS, R, o phyton). 
+Vimos que esta variable es muy útil para analizar la distribución de la humedad del suelo y también para describir la microtopografía que es responsable de buena parte de lo que denominamos "microclima". Es fácil de calcular a partir de un modelo digital de elevaciones. [Aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/mde_snev.tif.zip) hay un mde de Sierra Nevada. Busca cómo calcular la radiación total anual en tu herramienta favorita (QGIS, R, o phyton). 
 
 
 
@@ -105,21 +94,21 @@ Esta variable también es importante porque nos permitirá distinguir cómo camb
 
 El [índice de humedad](https://wikispaces.psu.edu/display/AnthSpace/Compound+Topographic+Index) (compound topographic index) se usa para inferir la capacidad que tiene un suelo de acumular agua en virtud de su posición topográfica en una ladera (en la parte alta o en la baja), y en relación a su altura relativa (está rodeado de píxeles más altos: cóncavo; está rodeado de píxeles más bajos: convexo). 
 
-Este índice se puede calcular fácilmente con QGIS y con otras herramientas. Os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/cti_pinares.tif) un mapa que muestra la distribución espacial de dicho índice en los pinares de repoblación de Sierra Nevada. 
+Este índice se puede calcular fácilmente con QGIS y con otras herramientas. Os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/cti_pinares.tif) un mapa que muestra la distribución espacial de dicho índice en los pinares de repoblación de Sierra Nevada. 
 
 
 
 ### Densidad de los pinares
 
-Aunque calculamos la densidad de los pinares de varias maneras al principio de la asignatura, os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/TCD_pinares.tif) un mapa de densidad del estrato arbóreo (expresado en porcentaje) y calculado mediante teledetección. En [esta](https://land.copernicus.eu/pan-european/high-resolution-layers/forests/tree-cover-density/status-maps/2015) página tienes información sobre cómo se ha realizado.
+Aunque calculamos la densidad de los pinares de varias maneras al principio de la asignatura, os paso [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/TCD_pinares.tif) un mapa de densidad del estrato arbóreo (expresado en porcentaje) y calculado mediante teledetección. En [esta](https://land.copernicus.eu/pan-european/high-resolution-layers/forests/tree-cover-density/status-maps/2015) página tienes información sobre cómo se ha realizado.
 
 
 
 ### Distribución de los pinares de repoblación
 
-Por si no lo tenéis controlado, [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2020--2021/geoinfo/pinares_repoblacion.tif) va un mapa que muestra la distribución de los pinares en Sierra Nevada. 
+Por si no lo tenéis controlado, [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2021-2022/geoinfo/pinares_repoblacion.tif) va un mapa que muestra la distribución de los pinares en Sierra Nevada. 
 
 
 ### Regeneración de la encina en función de los usos del suelo en 1956
 
-Esta variable es interesante y la comentamos al inicio de la asignatura. Pero no nos dio tiempo a ponerla en práctica. Si alguien tiene interés, [aquí](https://aprendiendo-cosas.github.io/peso_pasado_ecoinf_ugr/guion_peso_pasado.html) hay un guión que describe cómo incorporarla.
+Esta variable es interesante y la comentamos al inicio de la asignatura. Pero no nos dio tiempo a ponerla en práctica. Si alguien tiene interés, [aquí](https://rawcdn.githack.com/aprendiendo-cosas/TP_peso_pasado_ecoinf_ugr/2019-2020/guion_peso_pasado.html) hay un guión que describe cómo incorporarla.
