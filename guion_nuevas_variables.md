@@ -1,7 +1,7 @@
 # Guión sobre nuevas variables a incorporar en la tarea final
 
 
-> + **_Versión_**: 2022-2023
+> + **_Versión_**: 2023-2024
 > + **_Asignatura (titulación)_**: Ciclo de gestión del dato: ecoinformática (máster conservación, gestión y restauración de la biodiversidad. UGR). 
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
 
@@ -17,7 +17,9 @@ Esta actividad tiene los siguientes objetivos de aprendizaje:
 
 ## Contenido 
 
-La sesión se organiza en torno a la primera versión de flujo de trabajo que se elaboró al inicio de la asignatura ([aquí](https://rawcdn.githack.com/aprendiendo-cosas/T_flujo_trabajo_ecoinf_ugr/2022-2023/guion_flujo_trabajo.html) puedes ver el guión de dicha sesión). En él se observan algunas variables que se propusieron y que no se han abordado por falta de tiempo. En esta sesión describimos brevemente alguna de las variables que no hemos podido estudiar durante la asignatura pero que pueden incorporarse al trabajo final:
+En este guión se describen brevemente algunas variables que podrían utilizarse en el trabajo final de la asignatura. Por falta de tiempo no pudieron verse en clase. Además de estas, se pueden incorporar otras que los alumnos consideren relevantes.
+
+
 
 ### Incorporación de la variable "distancia a manchas de vegetación natural"
 
@@ -109,6 +111,3 @@ Aunque calculamos la densidad de los pinares de varias maneras al principio de l
 Por si no lo tenéis controlado, [aquí](https://github.com/aprendiendo-cosas/nuevas_variables_ecoinf_ugr/raw/2022-2023/geoinfo/pinares_repoblacion.tif) va un mapa que muestra la distribución de los pinares en Sierra Nevada. 
 
 
-### Regeneración de la encina en función de los usos del suelo en 1956
-
-Esta variable es interesante y la comentamos al inicio de la asignatura. Pero no nos dio tiempo a ponerla en práctica. Si alguien tiene interés, [aquí](https://rawcdn.githack.com/aprendiendo-cosas/TP_peso_pasado_ecoinf_ugr/2019-2020/guion_peso_pasado.html) hay un guión que describe cómo incorporarla.
